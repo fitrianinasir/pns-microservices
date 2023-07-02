@@ -4,43 +4,49 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Data
-@Setter
-@Getter
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
-@Table(name = "tbl_nasabah_mst")
+@Table(name = "TBL_NASABAH_MST")
 public class NasabahMSTModel {
 
+//    @Id
+//    @Column(name = "id")
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer id;
+
     @Id
-    @Column(name = "NO_REK_PK")
-    private String NO_REK_PK;
+    @Column(name = "no_rek_pk")
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer no_rek_pk;
 
-    @Column(name = "BRANCH_CODE")
-    private Integer BRANCH_CODE;
+    @Column(name = "branch_code")
+    private Integer branch_code;
 
-    @Column(name = "MEDIA_ID_PK")
-    private Integer MEDIA_ID_PK;
+    @Column(name = "media_id_pk")
+    private Integer media_id_pk;
 
-    @Column(name = "NAME")
-    private String NAME;
+    @Column(name = "cust_name")
+    private String cust_name;
 
-    @Column(name = "NO_HP1")
-    private String NO_HP1;
+    @Column(name = "no_hp1")
+    private String no_hp1;
 
-    @Column(name = "NO_HP2")
-    private String NO_HP2;
+    @Column(name = "no_hp2")
+    private String no_hp2;
 
-    @Column(name = "EMAIL1")
-    private String EMAIL1;
+    @Column(name = "email1")
+    private String email1;
 
-    @Column(name = "EMAIL2")
-    private String EMAIL2;
+    @Column(name = "email2")
+    private String email2;
 
-    @Column(name = "INPUT_DATE")
-    private String INPUT_DATE;
+    @Column(name = "input_date")
+    private String input_date;
 
-    @Column(name = "STATUS_ACCOUNT")
-    private String STATUS_ACCOUNT;
-
+    @Column(name = "status_account")
+    private String status_account;
 }

@@ -20,12 +20,12 @@ public class NasabahMSTService {
     public Optional<NasabahMSTModel> getBankCustomerById(Integer id){return nasabahMSTRepository.findById(id);}
     public NasabahMSTModel createBankCustomer(NasabahMSTModel nasabahMSTModel){
         System.out.println(nasabahMSTModel);
-        Optional<NasabahMSTModel> custExisted = nasabahMSTRepository.findById(Integer.valueOf(nasabahMSTModel.getNO_REK_PK()));
+        Optional<NasabahMSTModel> custExisted = nasabahMSTRepository.findById(nasabahMSTModel.getNo_rek_pk());
         if(custExisted.isEmpty()) {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
             Date date = new Date();
-            nasabahMSTModel.setINPUT_DATE(dateFormat.format(date));
-            nasabahMSTModel.setSTATUS_ACCOUNT("ACTIVE");
+            nasabahMSTModel.setInput_date(dateFormat.format(date));
+            nasabahMSTModel.setStatus_account("ACTIVE");
             System.out.println(nasabahMSTModel);
             return nasabahMSTRepository.save(nasabahMSTModel);
         }else{return null;}

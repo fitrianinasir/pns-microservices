@@ -28,13 +28,13 @@ public class NasabahMSTController {
         return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 
-    @PostMapping("/bank-customer")
-    public @ResponseBody ResponseEntity<ResponseMessage> createBankCustomer(@RequestBody NasabahMSTModel model){
-        ResponseMessage responseMessage = new ResponseMessage<>(200, "Created Data Successfully", nasabahMSTService.createBankCustomer(model));
+    @PostMapping("/bank-customer/create")
+    public @ResponseBody ResponseEntity<ResponseMessage> createBankCustomer(@RequestBody NasabahMSTModel nasabahMSTModel){
+        ResponseMessage responseMessage = new ResponseMessage<>(200, "Created Data Successfully", nasabahMSTService.createBankCustomer(nasabahMSTModel));
         return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 
-    @PutMapping("/bank-customer/{id}")
+    @PutMapping("/bank-customer/update/{id}")
     public @ResponseBody ResponseEntity<ResponseMessage> updateBankCustomer(@PathVariable("id") Integer id, @RequestBody NasabahMSTModel model){
         ResponseMessage responseMessage = new ResponseMessage<>(200, "Update Data Successfully", nasabahMSTService.updateBankCustomer(id, model));
         return new ResponseEntity<>(responseMessage, HttpStatus.OK);
