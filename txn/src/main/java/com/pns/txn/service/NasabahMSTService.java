@@ -17,22 +17,36 @@ public class NasabahMSTService {
     NasabahMSTRepository nasabahMSTRepository;
 
     public List<NasabahMSTModel> getAllBankCustomers(){return nasabahMSTRepository.findAll();}
-    public Optional<NasabahMSTModel> getBankCustomerById(Integer id){return nasabahMSTRepository.findById(id);}
+    public Optional<NasabahMSTModel> getBankCustomerById(Integer id){
+        return nasabahMSTRepository.findById(id);
+    }
     public NasabahMSTModel createBankCustomer(NasabahMSTModel nasabahMSTModel){
-        System.out.println(nasabahMSTModel);
         Optional<NasabahMSTModel> custExisted = nasabahMSTRepository.findById(nasabahMSTModel.getNo_rek_pk());
         if(custExisted.isEmpty()) {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
             Date date = new Date();
             nasabahMSTModel.setInput_date(dateFormat.format(date));
             nasabahMSTModel.setStatus_account("ACTIVE");
-            System.out.println(nasabahMSTModel);
             return nasabahMSTRepository.save(nasabahMSTModel);
         }else{return null;}
     }
-    public NasabahMSTModel updateBankCustomer(Integer id, NasabahMSTModel nasabahMSTModel){return nasabahMSTRepository.save(nasabahMSTModel);}
-    public Integer deleteBankCustomer(Integer id){
-        nasabahMSTRepository.deleteById(id);
-        return null;
+    public NasabahMSTModel updateBankCustomer(Integer id, NasabahMSTModel nasabahMSTModel){
+        Optional<NasabahMSTModel> custExisted = nasabahMSTRepository.findById(id);
+        if(custExisted.isPresent()){
+            return nasabahMSTRepository.save(nasabahMSTModel);
+        }else{
+            return null;
+        }
+
+    }
+    public Boolean deleteBankCustomer(Integer id){
+        Optional<NasabahMSTModel> custExisted = nasabahMSTRepository.findById(id);
+        if(custExisted.isPresent()){
+            nasabahMSTRepository.deleteById(id);
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }
