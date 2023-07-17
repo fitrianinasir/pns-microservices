@@ -1,5 +1,6 @@
 package com.pns.txn.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.pns.txn.model.NotificationModel;
 import com.pns.txn.service.SendNotifService;
 import lombok.RequiredArgsConstructor;
@@ -17,9 +18,7 @@ public class SendNotifController {
     SendNotifService sendNotifService;
 
     @PostMapping("/push-notif")
-    public void pushNotification(@RequestBody NotificationModel notificationModel){
-        System.out.println(notificationModel.toString());
+    public void pushNotification(@RequestBody NotificationModel notificationModel) throws JsonProcessingException {
         NotificationModel result = sendNotifService.pushNotification(notificationModel);
-        System.out.println(result);
     }
 }

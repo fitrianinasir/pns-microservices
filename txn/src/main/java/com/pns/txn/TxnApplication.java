@@ -13,11 +13,11 @@ public class TxnApplication {
 		SpringApplication.run(TxnApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner commandLineRunner(KafkaTemplate<String, String> kafkaTemplate){
-		return args -> {
-			kafkaTemplate.send("ftrnotif", "henlo ftr notif");
-		};
-	}
+//	@Bean
+//	CommandLineRunner commandLineRunner(KafkaTemplate<String, String> kafkaTemplate){
+//		return args -> {
+//			kafkaTemplate.send("ftrnotif", "henlo ftr notif");
+//		};
+//	}
 
 }
