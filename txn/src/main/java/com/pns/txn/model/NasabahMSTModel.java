@@ -12,15 +12,8 @@ import lombok.*;
 @Entity
 @Table(name = "TBL_NASABAH_MST")
 public class NasabahMSTModel {
-
-//    @Id
-//    @Column(name = "id")
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Integer id;
-
     @Id
     @Column(name = "no_rek_pk")
-//    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer no_rek_pk;
 
     @Column(name = "branch_code")
