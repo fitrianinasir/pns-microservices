@@ -10,25 +10,19 @@ import lombok.*;
 @Setter
 @Getter
 @Entity
-@Table(name = "TBL_NOTIF_TMP")
+@Table(name = "TBL_NOTIF_REPORT_GW")
 public class PushNotifModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name="txn_reffno")
-    private String txn_reffno;
-
-    @Column(name="recipient")
+    @Column(name = "recipient")
     private String recipient;
 
-    @Column(name="template_id")
-    private Integer template_id;
+    @Column(name = "body_message")
+    private String body_message;
 
-    @Column(name="template_params")
-    private String template_params;
-
-    @Column(name = "flag")
-    private String flag;
+    @Column(name = "sent_status")
+    private String sent_status;
 }
