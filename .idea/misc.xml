@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/notif/pom.xml" />
         <option value="$PROJECT_DIR$/txn/pom.xml" />
+        <option value="$PROJECT_DIR$/scheduler/pom.xml" />
       </list>
     </option>
   </component>

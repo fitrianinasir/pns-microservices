@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaListeners {
     @Autowired
-    PushNotifService pushNotifService;
+    PushNotifTmpService pushNotifTmpService;
 
     @KafkaListener(topics = "ftrnotif", groupId = "foo")
     void listener(String data) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         NotifTmpModel values = mapper.readValue(data, NotifTmpModel.class);
-        pushNotifService.pushNotification(values);
+        pushNotifTmpService.pushNotification(values);
     }
 }

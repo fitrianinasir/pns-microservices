@@ -1,9 +1,8 @@
-package com.pns.notif.controller;
+package com.notif.scheduler.controller;
 
-import com.pns.notif.dto.INotifData;
-import com.pns.notif.dto.NotifData;
-import com.pns.notif.service.PushNotifService;
-import lombok.AllArgsConstructor;
+
+import com.notif.scheduler.dto.INotifData;
+import com.notif.scheduler.service.SendToGatewayService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +14,12 @@ import java.util.List;
 @RestController
 @RequestMapping("api")
 @RequiredArgsConstructor
-public class PushNotifController {
+public class SendToGatewayController {
     @Autowired
-    PushNotifService pushNotifService;
+    SendToGatewayService gatewayService;
 
     @GetMapping("/get-data")
     public List<INotifData> getData(){
-        return pushNotifService.sendToGW();
+        return gatewayService.sendToGW();
     }
 }

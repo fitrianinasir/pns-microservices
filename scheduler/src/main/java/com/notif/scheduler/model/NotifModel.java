@@ -1,4 +1,4 @@
-package com.pns.notif.model;
+package com.notif.scheduler.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,7 +11,7 @@ import lombok.*;
 @Getter
 @Entity
 @Table(name = "TBL_NOTIF_REPORT_GW")
-public class PushNotifModel {
+public class NotifModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

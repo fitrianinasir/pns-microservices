@@ -1,23 +1,24 @@
-package com.pns.notif.service;
+package com.notif.scheduler.service;
 
-import com.pns.notif.dto.INotifData;
-import com.pns.notif.dto.ITemplateBody;
-import com.pns.notif.model.NotifTmpModel;
-import com.pns.notif.model.PushNotifModel;
-import com.pns.notif.repository.NotifTempRepository;
-import com.pns.notif.repository.PushNotifRepository;
+
+import com.notif.scheduler.dto.INotifData;
+import com.notif.scheduler.dto.ITemplateBody;
+import com.notif.scheduler.model.NotifTmpModel;
+import com.notif.scheduler.model.NotifModel;
+import com.notif.scheduler.repository.NotifTempRepository;
+import com.notif.scheduler.repository.SendToGatewayRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PushNotifService {
+public class SendToGatewayService {
     @Autowired
     NotifTempRepository notifTempRepository;
 
     @Autowired
-    PushNotifRepository pushNotifRepository;
+    SendToGatewayRepo sendToGatewayRepo;
 
     public void pushNotification(NotifTmpModel notifTmpModel){
         notifTmpModel.setFlag("N");
@@ -37,11 +38,11 @@ public class PushNotifService {
                 body = body.replace("["+out+"]", param);
             }
 
-            PushNotifModel pushNotifModel = new PushNotifModel();
-            pushNotifModel.setRecipient(i.getRecipient());
-            pushNotifModel.setBody_message(body);
-            pushNotifModel.setSent_status("SENT");
-            pushNotifRepository.save(pushNotifModel);
+            NotifModel notifModel = new NotifModel();
+            notifModel.setRecipient(i.getRecipient());
+            notifModel.setBody_message(body);
+            notifModel.setSent_status("SENT");
+            sendToGatewayRepo.save(notifModel);
             notifTempRepository.updateFlagData(i.getTxn_Reffno());
         }
 
