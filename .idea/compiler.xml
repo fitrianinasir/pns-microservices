@@ -10,11 +10,13 @@
         <module name="scheduler" />
         <module name="notif" />
         <module name="txn" />
+        <module name="config" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="config" options="-parameters" />
       <module name="notif" options="-parameters" />
       <module name="scheduler" options="-parameters" />
       <module name="txn" options="-parameters" />
