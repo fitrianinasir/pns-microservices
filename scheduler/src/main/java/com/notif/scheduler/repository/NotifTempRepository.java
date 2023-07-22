@@ -15,8 +15,8 @@ public interface NotifTempRepository extends JpaRepository<NotifTmpModel, Intege
     @Transactional
     @Modifying
     @Query(value = "SELECT p.txn_reffno, p.recipient, p.template_id, p.template_params, p.flag " +
-            "FROM TBL_NOTIF_TMP p WHERE p.FLAG = 'N' FETCH FIRST 3 ROWS ONLY", nativeQuery = true)
-    List<INotifData> selectToUpdate();
+            "FROM TBL_NOTIF_TMP p WHERE p.FLAG = 'N' FETCH FIRST :rows ROWS ONLY", nativeQuery = true)
+    List<INotifData> selectToUpdate(@Param("rows") Integer rows);
 
     @Transactional
     @Query(value = "SELECT p.template_body from TBL_TEMPLATE p WHERE p.template_id = :templateId", nativeQuery = true)

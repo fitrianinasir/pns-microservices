@@ -26,8 +26,8 @@ public class SendToGatewayService {
 
     }
 
-    public List<INotifData> sendToGW(){
-        List<INotifData> data = notifTempRepository.selectToUpdate();
+    public List<INotifData> sendToGW(Integer rows){
+        List<INotifData> data = notifTempRepository.selectToUpdate(rows);
         for(INotifData i : data){
             ITemplateBody templateBody = notifTempRepository.getTemplateBody(i.getTemplate_Id());
 
